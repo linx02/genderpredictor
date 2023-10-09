@@ -1,16 +1,11 @@
-init:
-  - echo "Installing libgl1-mesa-dev..."
+image:
+  name: python:3.10
+
+before:
   - sudo apt-get update
   - sudo apt-get install -y libgl1-mesa-dev
-  - echo "Installing Python 3.10..."
-  - sudo apt-get install -y python3.10
-  - python3.10 -m pip install --upgrade pip
+  - python -m pip install --upgrade pip
 
 tasks:
-  - name: Install Python Dependencies
-    command: python3.10 -m pip install -r requirements.txt
+    command: python -m pip install -r requirements.txt
     init: true
-
-vscode:
-  extensions:
-    - ms-python.python
