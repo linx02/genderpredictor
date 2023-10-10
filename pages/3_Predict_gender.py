@@ -12,6 +12,7 @@ model = load_model('model.h5')
 
 # Page title
 st.title('Predict Gender from image')
+st.info('This page aims to answer business requirement 1: "The client is interested in a machine learning solution to predict the gender of a person based on a picture of their face"')
 
 # File uploader
 st.write('Upload image files (.jpg) and make predictions by presing the button')

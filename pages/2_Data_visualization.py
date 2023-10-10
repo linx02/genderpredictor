@@ -15,10 +15,10 @@ IMAGE_PATHS = {
 
 # Page title
 st.title('Data visualization')
+st.info('This page aims to answer business requirement 2: "The client is interested in a study of the data presented visually in order to understand the data better"')
 
 # Page description
 st.write('Here we will visualize the data in order to understand it better. Below are checkboxes to show different visualizations.')
-st.info('This page aims to answer business requirement 2: "The client is interested in a study of the data presented visually in order to understand the data better"')
 
 # Checkboxes
 data_sample = st.checkbox("Show sample from dataset")
