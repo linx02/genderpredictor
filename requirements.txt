@@ -3,3 +3,4 @@ streamlit==1.27.2
 keras==2.14.0
 opencv-python==4.8.1.78
 pandas==2.1.1
+matplotlib==3.8.0
