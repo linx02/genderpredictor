@@ -14,6 +14,12 @@ model = load_model('model.h5')
 st.title('Predict Gender from image')
 st.info('This page aims to answer business requirement 1: "The client is interested in a machine learning solution to predict the gender of a person based on a picture of their face"')
 
+folder_path = '/workspace/genderpredictor/assets/live_prediction_images'
+
+st.markdown("### Download images for live prediction")
+with open('/workspace/genderpredictor/assets/live_prediction_images.zip', 'rb') as f:
+   st.download_button('Download Zip', f, file_name='live_prediction_images.zip')
+
 # File uploader
 st.write('Upload image files (.jpg) and make predictions by presing the button')
 uploaded_files = st.file_uploader("Choose a file...", type=["jpg"], accept_multiple_files=True)

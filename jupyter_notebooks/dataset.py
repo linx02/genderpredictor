@@ -2,6 +2,9 @@
 # Import libraries
 
 import os
+import numpy as np
+import pandas as pd
+import cv2
 
 # Vars
 
@@ -31,10 +34,6 @@ for train_dir, test_dir, val_dir in zip(os.listdir(TRAIN_DIR), os.listdir(TEST_D
         DIRS['val']['female'] = (os.path.join(VAL_DIR, val_dir))
     elif train_dir == 'male':
         DIRS['val']['male'] = (os.path.join(VAL_DIR, val_dir))
-
-import numpy as np
-import pandas as pd
-import cv2
 
 # Create project dataset as class
 
