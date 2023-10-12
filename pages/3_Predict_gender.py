@@ -7,6 +7,10 @@ import numpy as np
 import pandas as pd
 import os
 
+# Vars
+ROOT_DIR = os.getcwd()
+LIVE_PREDICTION_DIR = os.path.join(ROOT_DIR, 'assets', 'live_prediction_images.zip')
+
 # Load model
 model = load_model('model.h5')
 
@@ -14,10 +18,10 @@ model = load_model('model.h5')
 st.title('Predict Gender from image')
 st.info('This page aims to answer business requirement 1: "The client is interested in a machine learning solution to predict the gender of a person based on a picture of their face"')
 
-folder_path = '/workspace/genderpredictor/assets/live_prediction_images'
+# Allow users to download images
 
 st.markdown("### Download images for live prediction")
-with open('/workspace/genderpredictor/assets/live_prediction_images.zip', 'rb') as f:
+with open(LIVE_PREDICTION_DIR, 'rb') as f:
    st.download_button('Download Zip', f, file_name='live_prediction_images.zip')
 
 # File uploader

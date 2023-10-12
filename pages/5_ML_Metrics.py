@@ -2,7 +2,10 @@ import streamlit as st
 import os
 import pandas as pd
 
-IMAGES_DIR = os.path.join(os.getcwd(), 'assets', 'images')
+# Vars
+
+ROOT_DIR = os.getcwd()
+IMAGES_DIR = os.path.join(ROOT_DIR, 'assets', 'images')
 IMAGE_PATHS = {
     'train_plot': os.path.join(IMAGES_DIR, 'metrics_over_epochs.png'),
     'eval_plot': os.path.join(IMAGES_DIR, 'evaluation_metrics.png'),
@@ -35,5 +38,5 @@ if eval_plot:
 if cm:
     st.image(IMAGE_PATHS['confusion_matrix'], caption='Confusion matrix', use_column_width=True)
 if cr:
-    cr_file = pd.read_csv('/workspace/genderpredictor/jupyter_notebooks/classification_report.csv')
+    cr_file = pd.read_csv(os.path.join(ROOT_DIR, 'jupyter_notebooks', 'classification_report.csv'))
     st.table(cr_file)
