@@ -54,14 +54,17 @@ class ProjectDataset:
             'all': {}
         }
 
-        data['train']['male'] = [1] * len(os.listdir(self.dirs['train']['male']))
-        data['test']['male'] = [1] * len(os.listdir(self.dirs['test']['male']))
-        data['val']['male'] = [1] * len(os.listdir(self.dirs['val']['male']))
-        data['train']['female'] = [0] * len(os.listdir(self.dirs['train']['female']))
-        data['test']['female'] = [0] * len(os.listdir(self.dirs['test']['female']))
-        data['val']['female'] = [0] * len(os.listdir(self.dirs['val']['female']))
-        data['all']['male'] = data['train']['male'] + data['test']['male'] + data['val']['male']
-        data['all']['female'] = data['train']['female'] + data['test']['female'] + data['val']['female']
+        splits = ['train', 'test', 'val']
+        genders = ['male', 'female']
+
+        for split in splits:
+            data[split] = {}
+            for gender in genders:
+                num_samples = len(os.listdir(self.dirs[split][gender]))
+                data[split][gender] = [1] * num_samples if gender == 'male' else [0] * num_samples
+
+        for gender in genders:
+            data['all'][gender] = sum((data[split][gender] for split in splits), [])
         data['all']['all'] = data['all']['male'] + data['all']['female']
 
         return data
@@ -76,20 +79,23 @@ class ProjectDataset:
             'all': {}
         }
 
-        data['train']['male'] = [os.path.join(self.dirs['train']['male'], file) for file in os.listdir(self.dirs['train']['male'])]
-        data['test']['male'] = [os.path.join(self.dirs['test']['male'], file) for file in os.listdir(self.dirs['test']['male'])]
-        data['val']['male'] = [os.path.join(self.dirs['val']['male'], file) for file in os.listdir(self.dirs['val']['male'])]
-        data['train']['female'] = [os.path.join(self.dirs['train']['female'], file) for file in os.listdir(self.dirs['train']['female'])]
-        data['test']['female'] = [os.path.join(self.dirs['test']['female'], file) for file in os.listdir(self.dirs['test']['female'])]
-        data['val']['female'] = [os.path.join(self.dirs['val']['female'], file) for file in os.listdir(self.dirs['val']['female'])]
-        data['all']['male'] = data['train']['male'] + data['test']['male'] + data['val']['male']
-        data['all']['female'] = data['train']['female'] + data['test']['female'] + data['val']['female']
+        splits = ['train', 'test', 'val']
+        genders = ['male', 'female']
+
+        for split in splits:
+            data[split] = {}
+            for gender in genders:
+                data[split][gender] = [os.path.join(self.dirs[split][gender], file) for file in os.listdir(self.dirs[split][gender])]
+
+        for gender in genders:
+            data['all'][gender] = sum((data[split][gender] for split in splits), [])
+
         data['all']['all'] = data['all']['male'] + data['all']['female']
 
         return data
 
     # Read and return files as numpy arrays from dataset
-    def images_array(self, normalize:bool = False) -> dict:
+    def images_array(self, normalize:bool = False, resize:bool = False) -> dict:
 
         image_filepaths = self.image_filepaths()
         
@@ -99,27 +105,28 @@ class ProjectDataset:
             'val': {},
             'all': {}
         }
-        if normalize:
-            data['train']['male'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) / 255.0 for img in image_filepaths['train']['male']]
-            data['test']['male'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) / 255.0 for img in image_filepaths['test']['male']]
-            data['val']['male'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) / 255.0 for img in image_filepaths['val']['male']]
-            data['train']['female'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) / 255.0 for img in image_filepaths['train']['female']]
-            data['test']['female'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) / 255.0 for img in image_filepaths['test']['female']]
-            data['val']['female'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) / 255.0 for img in image_filepaths['val']['female']]
-            data['all']['male'] = data['train']['male'] + data['test']['male'] + data['val']['male']
-            data['all']['female'] = data['train']['female'] + data['test']['female'] + data['val']['female']
-            data['all']['all'] = data['all']['male'] + data['all']['female']
 
-        else:
-            data['train']['male'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) for img in image_filepaths['train']['male']]
-            data['test']['male'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) for img in image_filepaths['test']['male']]
-            data['val']['male'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) for img in image_filepaths['val']['male']]
-            data['train']['female'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) for img in image_filepaths['train']['female']]
-            data['test']['female'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) for img in image_filepaths['test']['female']]
-            data['val']['female'] = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) for img in image_filepaths['val']['female']]
-            data['all']['male'] = data['train']['male'] + data['test']['male'] + data['val']['male']
-            data['all']['female'] = data['train']['female'] + data['test']['female'] + data['val']['female']
-            data['all']['all'] = data['all']['male'] + data['all']['female']
+        splits = ['train', 'test', 'val']
+        genders = ['male', 'female']
+
+        for split in splits:
+            data[split] = {}
+            for gender in genders:
+                data[split][gender] = []
+                image_list = image_filepaths[split][gender]
+
+                for img in image_list:
+                    image_array = cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB)
+                    if resize:
+                        image_array = cv2.resize(image_array, (200, 200))
+                    if normalize:
+                        image_array = image_array / 255.0
+                    data[split][gender].append(image_array)
+        
+        for gender in genders:
+            data['all'][gender] = sum((data[split][gender] for split in splits), [])
+
+        data['all']['all'] = data['all']['male'] + data['all']['female']
 
         return data
 
