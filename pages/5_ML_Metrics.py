@@ -38,5 +38,5 @@ if eval_plot:
 if cm:
     st.image(IMAGE_PATHS['confusion_matrix'], caption='Confusion matrix', use_column_width=True)
 if cr:
-    cr_file = pd.read_csv(os.path.join(ROOT_DIR, 'jupyter_notebooks', 'classification_report.csv'))
+    cr_file = pd.read_csv(os.path.join(ROOT_DIR, 'assets', 'classification_report.csv'))
     st.table(cr_file)

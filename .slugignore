@@ -1,0 +1,5 @@
+jupyter_notebooks/
+.gitpod.yml
+.gitpod.Dockerfile
+dashboard_plan.md
+README.md
