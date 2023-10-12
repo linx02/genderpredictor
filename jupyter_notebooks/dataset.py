@@ -65,6 +65,10 @@ class ProjectDataset:
 
         for gender in genders:
             data['all'][gender] = sum((data[split][gender] for split in splits), [])
+        
+        data['train']['all'] = data['train']['male'] + data['train']['female']
+        data['test']['all'] = data['test']['male'] + data['test']['female']
+        data['val']['all'] = data['val']['male'] + data['val']['female']
         data['all']['all'] = data['all']['male'] + data['all']['female']
 
         return data
@@ -90,6 +94,9 @@ class ProjectDataset:
         for gender in genders:
             data['all'][gender] = sum((data[split][gender] for split in splits), [])
 
+        data['train']['all'] = data['train']['male'] + data['train']['female']
+        data['test']['all'] = data['test']['male'] + data['test']['female']
+        data['val']['all'] = data['val']['male'] + data['val']['female']
         data['all']['all'] = data['all']['male'] + data['all']['female']
 
         return data
@@ -126,6 +133,9 @@ class ProjectDataset:
         for gender in genders:
             data['all'][gender] = sum((data[split][gender] for split in splits), [])
 
+        data['train']['all'] = data['train']['male'] + data['train']['female']
+        data['test']['all'] = data['test']['male'] + data['test']['female']
+        data['val']['all'] = data['val']['male'] + data['val']['female']
         data['all']['all'] = data['all']['male'] + data['all']['female']
 
         return data
