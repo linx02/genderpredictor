@@ -3,3 +3,4 @@ jupyter_notebooks/
 .gitpod.Dockerfile
 dashboard_plan.md
 README.md
+model.h5

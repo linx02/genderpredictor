@@ -1,7 +1,6 @@
 # Import modules
 import streamlit as st
 from PIL import Image
-import numpy as np
 import pandas as pd
 import os
 import requests
@@ -30,7 +29,7 @@ if st.button("Predict"):
         predictions = {}
         for image in uploaded_files:
             # Send image to API
-            response = requests.post('http://127.0.0.1:5000/predict', files={'file': image})
+            response = requests.post('https://gender-predictor-api-43d1edacb61c.herokuapp.com/predict', files={'file': image})
             # Save prediction
             predictions[image.name] = response.text
             st.write('Prediction: ', response.text)
