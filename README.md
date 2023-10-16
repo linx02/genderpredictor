@@ -1,18 +1,37 @@
 # Gender Prediction using CNN
+
 An image classifier machine learning project for gender prediction utilizing convolutional neural networks (CNN).
 
+# Table of Contents
+
+1. [Gender Prediction using CNN](#gender-prediction-using-cnn)
+2. [Project Dataset](#project-dataset)
+3. [Business Requirements](#business-requirements)
+4. [Hypothesis and Validation](#hypothesis-and-validation)
+5. [ML Business Case](#ml-business-case)
+6. [Dashboard Design (Streamlit App User Interface)](#dashboard-design-streamlit-app-user-interface)
+   1. [Page 1: Home](#page-1-home)
+   2. [Page 2: Project Summary](#page-2-project-summary)
+   3. [Page 3: Data Visualization](#page-3-data-visualization)
+   4. [Page 4: Predict Gender](#page-4-predict-gender)
+   5. [Page 5: Hypothesis and Validation](#page-5-hypothesis-and-validation)
+   6. [Page 6: ML Metrics](#page-6-ml-metrics)
+   7. [Page 7: API](#page-7-api)
+7. [Deployment](#deployment)
+8. [Main Data Analysis & Machine Learning Libraries](#main-data-analysis--machine-learning-libraries)
+9. [Run locally](#run-locally)
+10. [Credits](#credits)
+
 ## Project Dataset
+Dataset used provided by __Ashish Jangra__ under the __CC BY-NC-SA 4.0 license__.
 
-The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets). The dataset consists of 200k+ images of peoples faces.
-Link to dataset:  [Gender Classification 203K Images | CelebA](https://www.kaggle.com/datasets/ashishjangra27/gender-recognition-200k-images-celeba).
-This dataset is licensed under: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-The original source of the data in the dataset used in this project can be found [here](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html).
+Link to dataset: [Gender Classification 203K Images | CelebA](https://www.kaggle.com/datasets/ashishjangra27/gender-recognition-200k-images-celeba)
+License Details: [CC BY-NC-SA 4.0 License Deed](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+Original source of dataset: [Large-scale CelebFaces Attributes (CelebA) Dataset](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
 
-_In order to respect the agreement in the above link, emphazising the following:_
+The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets) and dataset consists of 200k+ images of peoples faces.
 
-"-   You agree **not to** further copy, publish or distribute any portion of the CelebA dataset. Except, for internal use at a single site within the same organization it is allowed to make copies of the dataset."
-
-_I have not included the actual data in this repo, if you would like to inspect the dataset, please follow the steps in [LINK](link) to download the dataset to your local machine._
+_I have not included the actual data in this repo, if you would like to inspect the dataset, please follow the steps in [Run locally](#run-locally) to download the dataset to your local machine._
 
 ## Business requirements
 
@@ -133,4 +152,33 @@ __Main Machine Learning libraries used:__
 - Scikeras
 	- For performing GridSearchCV on Keras models which is not compatible by default with scikit-learn. (KerasClassifier)
 
+## Run locally
+
+This repo covers the entire process of creating a ML model. From collecting and processing the data, to conducting hyperparameter optimization, data augmentation, defining and training the model on the data.
+
+__To use this repo, follow these steps:__
+
+1. Fork or clone this repository
+2. Install dependencies by running:
+	```bash
+	pip install -r "requirements-dev.txt"
+	```
+3. Register an account with [Kaggle](https://www.kaggle.com/) and create a new API token, download the kaggle.json and place it in the projects root directory.
+4. Run the notebooks in the jupyter_notebooks folder in the specified order.
+	- __DataCollection.ipynb:__ Downloads the dataset and extracts specified number of images.
+	- __DataVisualization.ipynb:__ Conducts studies on the data and saves insightful plots.
+	- __Model.ipynb:__ Prepares data, performs data augmentation and hyperparameter optimization, defines model architecture, trains, evaluates and saves a ML model.
+5. Start the web app by running:
+	```bash
+	streamlit run Home.py
+	```
+___If you encounter an error while importing opencv-python(cv2), run the following commands:___
+```bash
+sudo apt-get update
+sudo apt-get install -y libgl1-mesa-dev
+```
+
 ## Credits
+
+[Churnometer repo by Code Institute](https://github.com/Code-Institute-Solutions/churnometer#readme): For the Readme template/structure.
+[Streamlit documentation](https://docs.streamlit.io/): For getting the web app up and running.
