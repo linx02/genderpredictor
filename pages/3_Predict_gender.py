@@ -20,7 +20,7 @@ with open(LIVE_PREDICTION_DIR, 'rb') as f:
    st.download_button('Download Zip', f, file_name='live_prediction_images.zip')
 
 # File uploader
-st.write('Upload image files (.jpg) and make predictions by presing the button')
+st.write('Upload image files (.jpg) and make predictions by pressing the button')
 uploaded_files = st.file_uploader("Choose a file...", type=["jpg"], accept_multiple_files=True)
 
 if st.button("Predict"):
