@@ -31,8 +31,8 @@ if st.button("Predict"):
             # Send image to API
             response = requests.post('https://gender-predictor-api-43d1edacb61c.herokuapp.com/predict', files={'file': image})
             # Save prediction
-            predictions[image.name] = response.text
-            st.write('Prediction: ', response.text)
+            predictions[image.name] = response.json()['gender']
+            st.write('Prediction: ', response.json()['gender'])
 
             # Display image
             image = Image.open(image)
