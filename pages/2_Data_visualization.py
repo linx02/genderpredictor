@@ -23,16 +23,20 @@ st.write('Here we will visualize the data in order to understand it better. Belo
 
 # Checkboxes
 data_sample = st.checkbox("Show sample from dataset")
+if data_sample:
+    st.image(IMAGE_PATHS['data_sample'], caption='Sample of 4 images of each label from the dataset.', use_column_width=True)
+
+st.success('A study of the label distributions was conducted in the notebook in order to understand the distribution of labels within the dataset. The results of this study can be seen below.')
 label_distribution = st.checkbox("Show label distributions")
+if label_distribution:
+    st.image(IMAGE_PATHS['folder_distribution'], caption='Distribution of total images within train, test, val folders along with the total.', use_column_width=True)
+    st.image(IMAGE_PATHS['label_distribution'], caption='Distribution of labels within train, test, val folders along with the totals.', use_column_width=True)
+
+st.success('A study of the average images was conducted in the notebook in order to understand the average images of each label within the dataset. The results of this study can be seen below.')
 avg_images = st.checkbox("Show average images")
 diff_avg = st.checkbox("Show difference between genders average images")
 
 # On checkbox click
-if data_sample:
-    st.image(IMAGE_PATHS['data_sample'], caption='Sample of 4 images of each label from the dataset.', use_column_width=True)
-if label_distribution:
-    st.image(IMAGE_PATHS['folder_distribution'], caption='Distribution of total images within train, test, val folders along with the total.', use_column_width=True)
-    st.image(IMAGE_PATHS['label_distribution'], caption='Distribution of labels within train, test, val folders along with the totals.', use_column_width=True)
 if avg_images:
     st.image(IMAGE_PATHS['avg_std_male'], caption='The average and standard deviation image of label female, calculated from the entire dataset of 3000 images', use_column_width=True)
     st.image(IMAGE_PATHS['avg_std_female'], caption='The average and standard deviation image of label male, calculated from the entire dataset of 3000 images', use_column_width=True)
