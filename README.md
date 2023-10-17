@@ -1,7 +1,6 @@
 # Gender Prediction using CNN
 
 An image classifier machine learning project for gender prediction utilizing convolutional neural networks (CNN).
-<iframe src="https://giphy.com/embed/SU2ic3wTfuC6JhD1lA" width="100" height="100" frameBorder="0"></iframe><iframe src="https://giphy.com/embed/LMt9638dO8dftAjtco" width="100" height="100" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 # Table of Contents
 
