@@ -4,19 +4,26 @@ An image classifier machine learning project for gender prediction utilizing con
 
 # Table of Contents
 
-1. [Gender Prediction using CNN](#gender-prediction-using-cnn)
-2. [Project Dataset](#project-dataset)
-3. [Business Requirements](#business-requirements)
-4. [Hypothesis and Validation](#hypothesis-and-validation)
+1. [Project Dataset](#project-dataset)
+2. [Business Requirements](#business-requirements)
+3. [Hypothesis and Validation](#hypothesis-and-validation)
+4. [The rationale to map the business requirements to the Data Visualizations and ML tasks](#the-rationale-to-map-the-business-requirements-to-the-data-visualizations-and-ml-tasks)
+   - [Epics](#epics)
+   - [User Stories](#user-stories)
+      1. [Data Collection and Preparation](#data-collection-and-preparation)
+      2. [Data Visualization](#data-visualization)
+      3. [Model Training, Optimization, and Evaluation](#model-training-optimization-and-evaluation)
+      4. [Dashboard Planning, Designing, and Development and Deployment](#dashboard-planning-designing-and-development-and-deployment)
+      5. [API Development and Deployment](#api-development-and-deployment)
 5. [ML Business Case](#ml-business-case)
 6. [Dashboard Design (Streamlit App User Interface)](#dashboard-design-streamlit-app-user-interface)
-   1. [Page 1: Home](#page-1-home)
-   2. [Page 2: Project Summary](#page-2-project-summary)
-   3. [Page 3: Data Visualization](#page-3-data-visualization)
-   4. [Page 4: Predict Gender](#page-4-predict-gender)
-   5. [Page 5: Hypothesis and Validation](#page-5-hypothesis-and-validation)
-   6. [Page 6: ML Metrics](#page-6-ml-metrics)
-   7. [Page 7: API](#page-7-api)
+   - [Page 1: Home](#page-1-home)
+   - [Page 2: Project Summary](#page-2-project-summary)
+   - [Page 3: Data Visualization](#page-3-data-visualization)
+   - [Page 4: Predict Gender](#page-4-predict-gender)
+   - [Page 5: Hypothesis and Validation](#page-5-hypothesis-and-validation)
+   - [Page 6: ML Metrics](#page-6-ml-metrics)
+   - [Page 7: API](#page-7-api)
 7. [Deployment](#deployment)
 8. [Main Data Analysis & Machine Learning Libraries](#main-data-analysis--machine-learning-libraries)
 9. [Run locally](#run-locally)
@@ -57,6 +64,65 @@ _In short terms, the business requirements are the following:_
 __Hypothesis__: Men and women have gender-specific facial features that differentiate them.
 
 __How to validate__: Conducting an average image study of the male and female face.
+
+## The rationale to map the business requirements to the Data Visualisations and ML tasks
+
+### Epics:
+
+- __Data collection and preparation__
+- __Data visualization__
+- __Model training, optimization and evaluation__
+- __Dashboard planning, designing, and development and deployment__
+- __API Development and deployment__
+
+### User stories:
+
+#### Data Collection and Preparation
+
+1. **User Story:** As a developer, I can source and acquire the data to create a reliable and well-prepared dataset for the project.
+   - **Task:** Download the dataset and extract the relevant data, save it in a new relevant folder structure.
+
+#### Data Visualization
+
+1. **User Story:** As a developer, I can generate informative visualizations to understand the data, providing valuable insights.
+   - **Task:** Choose appropriate visualization techniques, generate visualizations and save them.
+
+2. **User Story:** As a developer, I can integrate data visualizations into the dashboard for user-friendly data exploration.
+   - **Task:** Design the layout and implement interactive features.
+
+#### Model Training, Optimization, and Evaluation
+
+1. **User Story:** As a developer, I can find the optimal hyperparamaters for my model in a set range of parameters.
+   - **Task:** Find the optimal parameters using techniques such as Grid Search or Randomized Search.
+
+2. **User Story:** As a developer, I can train and fine-tune the machine learning model based on the optimal hyperparameters found.
+   - **Task:** Define model architecture and implement a function to build the model based on the found optimal hyperparameters.
+
+3. **User Story:** As a developer, I can evaluate my models performance using a variety of metrics.
+	- **Task:** Perform model evaluation using a Machine Learning library, visually represent the results and save the visualizations.
+
+4. **User Story:** As a user, I can access model evaluation results, helping me understand the model's performance.
+   - **Task:** Provide a user interface for accessing model evaluation reports.
+
+#### Dashboard Planning, Designing, and Development and Deployment
+
+1.  **User Story:** As a developer, I can implement Streamlit features, making it interactive and user-friendly. 
+	-  **Task:** Develop and integrate interactive Streamlit features and functionalities into the dashboard.
+
+2.  **User Story:** As a developer, I can deploy the Streamlit dashboard, ensuring it is accessible to users. 
+	- **Task:** Deploy the streamlit app to Heroku and ensure the dashboard is accessible online.
+
+3. **User Story:** As a user, I can access and interact with the deployed Streamlit app, enabling me to navigate through the project, explore data visualizations, and make live predictions on the model.
+	-  **Task:** Provide navigation options, interactive data exploration features and a page for making live predictions with a way to download sample images for making predictions.
+
+#### API Development and Deployment
+
+1.  **User Story:** As a user, I can access the API in order to integrate the machine learning solution into my applications.
+	-  **Task:** Develop an API and provide an endpoint for users to interact with the model.
+
+2. **User Story:** As a user, I can access information for usage of the API in order to learn how to use it.
+	- **Task:** Provide usage instructions along with example code on how to use the API inside the dashboard.
+
 
 ## ML Business Case
 
