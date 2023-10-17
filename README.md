@@ -1,6 +1,7 @@
 # Gender Prediction using CNN
 
 An image classifier machine learning project for gender prediction utilizing convolutional neural networks (CNN).
+<iframe src="https://giphy.com/embed/SU2ic3wTfuC6JhD1lA" width="100" height="100" frameBorder="0"></iframe><iframe src="https://giphy.com/embed/LMt9638dO8dftAjtco" width="100" height="100" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
 # Table of Contents
 
@@ -176,6 +177,11 @@ _Should answer business requirement 3: "The client is interested in an API in or
 - Provide the API endpoint
 - Provide instructions on how to use the API along with example code
 
+## API
+As part of the business requirement _"The client is interested in an API in order to integrate the solution into their own applications"_, but also in order to tackle the slug size limitation set by Heroku, I developed a simple flask application to be able to interact with the model via POST requests. This app is hosted in a different Heroku app instance.
+
+More information about the API can be found in [this GitHub repository](https://github.com/linx02/genderpredictor-api)
+
 ## Deployment
 This project was deployed to [Heroku](https://heroku.com/) using the following steps:
 1.  Log in to Heroku and create an App
@@ -248,3 +254,4 @@ sudo apt-get install -y libgl1-mesa-dev
 
 [Churnometer repo by Code Institute](https://github.com/Code-Institute-Solutions/churnometer#readme): For the Readme template/structure.
 [Streamlit documentation](https://docs.streamlit.io/): For getting the web app up and running.
+[GIPHY](https://giphy.com/): For gifs in readme file
