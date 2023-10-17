@@ -252,5 +252,5 @@ sudo apt-get install -y libgl1-mesa-dev
 ## Credits
 
 [Churnometer repo by Code Institute](https://github.com/Code-Institute-Solutions/churnometer#readme): For the Readme template/structure.
+
 [Streamlit documentation](https://docs.streamlit.io/): For getting the web app up and running.
-[GIPHY](https://giphy.com/): For gifs in readme file
